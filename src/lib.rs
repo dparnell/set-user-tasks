@@ -18,7 +18,7 @@ use windows::Win32::Storage::EnhancedStorage::PKEY_Title;
 #[inline]
 fn string_to_pwstr(str: &str) -> PCWSTR {
     let mut encoded = str.encode_utf16().chain([0u16]).collect::<Vec<u16>>();
-    PCWSTR::from_raw(encoded.as_mut_ptr())
+    PCWSTR(encoded.as_mut_ptr())
 }
 
 pub struct UserTask<'a> {
