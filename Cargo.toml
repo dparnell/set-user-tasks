@@ -1,6 +1,6 @@
 [package]
 name = "set-user-tasks"
-version = "0.34.0"
+version = "0.48.0"
 edition = "2018"
 readme = "README.md"
 repository = "https://github.com/dparnell/set-user-tasks"
@@ -13,7 +13,7 @@ description = "set the tasks section on the windows task bar"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-windows = { version = "0.34.0", features = [
+windows = { version = "0.48", features = [
     "Win32_Foundation",
     "Win32_System_SystemServices",
     "Win32_System_Com",

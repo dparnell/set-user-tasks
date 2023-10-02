@@ -1,5 +1,5 @@
 use windows::{
-    core::{PCWSTR, Interface},
+    core::{PCWSTR},
     Win32::{
         System::{
             Com::{CoCreateInstance, CLSCTX_INPROC_SERVER}
@@ -9,6 +9,7 @@ use windows::{
         },
     }
 };
+use windows::core::ComInterface;
 use windows::Win32::Storage::EnhancedStorage::PKEY_Title;
 
 
@@ -53,7 +54,7 @@ pub fn set_tasks(tasks: Vec<UserTask>) -> Result<(), windows::core::Error> {
 
             let mut title: Vec<u16> = task.title.encode_utf16().collect();
             title.push(0x00);
-            let pv = InitPropVariantFromStringVector(&[windows::core::PWSTR(title.as_mut_ptr())])?;
+            let pv = InitPropVariantFromStringVector(Some(&[windows::core::PCWSTR(title.as_mut_ptr())]))?;
 
             prop_store.SetValue(&pkey, &pv)?;
             prop_store.Commit()?;
